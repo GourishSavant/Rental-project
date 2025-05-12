@@ -23,6 +23,19 @@ const db = new sqlite3.Database('./database.db', (err) => {
       userId INTEGER,
       refreshToken TEXT
     )`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS cars (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      year INTEGER,
+      title TEXT,
+      subtitle TEXT,
+      type TEXT,
+      seats INTEGER,
+      doors INTEGER,
+      luggage INTEGER,
+      price INTEGER,
+      image TEXT
+    )`);
   }
 });
 
