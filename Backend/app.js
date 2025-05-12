@@ -2,10 +2,14 @@
 import express from 'express';
 import employeeRoutes from './routes/EmployeeRoute.js';
 import employeeLogin from './routes/EmployeeLogin.js';
-
+import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true
+}));
 app.use(express.json());
 app.use('/users', employeeRoutes, employeeLogin);
 

@@ -36,6 +36,11 @@ router.post('/register',authenticateToken,
   }
 );
 
+router.get('/me', authenticateToken, (req, res) => {
+  const { id, fullName, email, role } = req.user; 
+  res.status(200).json({ id, fullName, email, role });
+});
+
 router.get('/getUsers', authenticateToken, (req, res) => {
   db.all(`SELECT id, fullName, email, role FROM employees`, [], (err, rows) => {
     if (req.user.role !== 'admin') {
